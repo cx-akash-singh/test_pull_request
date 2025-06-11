@@ -6,6 +6,7 @@ import javax.servlet.http.*;
 public class VulnerableApp extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userInput = request.getParameter("user");
+        String userInput2 = request.getParameter("user");
         // SQL Injection vulnerability
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "password");
@@ -17,5 +18,6 @@ public class VulnerableApp extends HttpServlet {
         }
         // Reflected XSS vulnerability
         response.getWriter().println("Hello, " + userInput);
+        response.getWriter().println("Hello, " + userInput2);
     }
 }
